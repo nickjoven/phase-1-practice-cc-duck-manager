@@ -7,7 +7,6 @@ const baseUrl = 'http://localhost:3000/ducks'
 const duckName = document.getElementById('duck-display-name')
 const duckImage = document.getElementById('duck-display-image')
 const duckLikes = document.getElementById('duck-display-likes')
-
 duckImage.src = 'https://i.ebayimg.com/images/g/nw0AAOSw8NxhmVyc/s-l500.jpg' 
 
 // need to get duck source image
@@ -30,9 +29,18 @@ const fetchDucks = () => {
                 duckImage.src = element["img_url"]
                 duckLikes.textContent = (element.likes == 1) ? `${element.likes} like` : `${element.likes} likes` 
             })
-        });
-    })
+        })
+    });
 }
+
+
+// 3 
+// increment like count on click -->
+duckLikes.addEventListener('click', (e) => {
+    currentLikes = parseInt(duckLikes.textContent)
+    currentLikes++
+    duckLikes.textContent = (currentLikes == 1) ? `${currentLikes} like` :  `${currentLikes} likes`
+})
 
 fetchDucks()
 
@@ -46,8 +54,6 @@ fetchDucks()
 
 
 
-// 3 
-// increment like count on click -->
 
 // 4
 // Listen to form. Honestly, just POST as to not f everything up. POST
